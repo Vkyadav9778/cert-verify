@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificate Verification - Dynamic Creation Pvt Ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: #f3f4f7;
+    margin: 0;
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+  }
+  .card {
+    background: #fff;
+    max-width: 560px;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+  .header {
+    background: #222a47;
+    padding: 28px 28px 22px;
+    text-align: center;
+    position: relative;
+  }
+  .badge {
+    width: 64px; height: 52px;
+    background: #ffcc00;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    transform: rotate(-6deg);
+  }
+  .badge span {
+    font-weight: 800;
+    font-style: italic;
+    color: #d24e54;
+    font-size: 11px;
+    line-height: 1.1;
+    text-align: center;
+  }
+  .header h1 {
+    color: #fff;
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0;
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-top: 14px;
+  }
+  .status.invalid {
+    background: rgba(231, 76, 60, 0.15);
+    color: #e74c3c;
+  }
+  .status::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .body { padding: 26px 28px 28px; }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 13px 0;
+    border-bottom: 1px solid #eef0f4;
+  }
+  .row:last-child { border-bottom: none; }
+  .row .label {
+    color: #8a8f9c;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .row .value {
+    color: #222a47;
+    font-size: 14.5px;
+    font-weight: 600;
+    text-align: right;
+  }
+  .row .value.name { font-size: 17px; color: #d3a017; }
+  .pdfBtn {
+    display: block;
+    text-align: center;
+    background: #222a47;
+    color: #fff;
+    text-decoration: none;
+    padding: 13px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14.5px;
+    margin-top: 22px;
+  }
+  .pdfBtn:hover { background: #2d3863; }
+  .websiteBtn {
+    margin-top: 22px;
+  }
+  .footer-note {
+    text-align: center;
+    color: #b0b4c0;
+    font-size: 11.5px;
+    margin-top: 18px;
+  }
+  .notfound {
+    text-align: center;
+    padding: 40px 20px;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+
+<div class="card" id="card">
+  <!-- populated by JS -->
+</div>
+
+<script>
+function getParams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    name: params.get('name') || '',
+    certId: params.get('certId') || '',
+    course: params.get('course') || '',
+    org: params.get('org') || '',
+    issueDate: params.get('issueDate') || '',
+    pdf: params.get('pdf') || '',
+    status: params.get('status') || 'valid'
+  };
+}
+
+function render() {
+  const d = getParams();
+  const card = document.getElementById('card');
+
+  if (!d.certId && !d.name) {
+    card.innerHTML = `
+      <div class="header">
+        <div class="badge"><span>Digital<br>Blinc</span></div>
+        <h1>Certificate Verification</h1>
+      </div>
+      <div class="notfound">No certificate data found in this link.</div>
+    `;
+    return;
+  }
+
+  const isValid = d.status !== 'invalid';
+
+  card.innerHTML = `
+    <div class="header">
+      <div class="badge"><span>Digital<br>Blinc</span></div>
+      <h1>Certificate Verification</h1>
+      <div class="status ${isValid ? '' : 'invalid'}">${isValid ? 'Verified &amp; Authentic' : 'Not Found / Invalid'}</div>
+    </div>
+    <div class="body">
+      <div class="row"><div class="label">Name</div><div class="value name">${escapeHtml(d.name)}</div></div>
+      <div class="row"><div class="label">Certificate ID</div><div class="value">${escapeHtml(d.certId)}</div></div>
+      <div class="row"><div class="label">Course / Internship</div><div class="value">${escapeHtml(d.course)}</div></div>
+      <div class="row"><div class="label">Organization</div><div class="value">${escapeHtml(d.org)}</div></div>
+      <div class="row"><div class="label">Issue Date</div><div class="value">${escapeHtml(d.issueDate)}</div></div>
+      <a class="pdfBtn websiteBtn" href="https://dynamiccreation.in/" target="_blank">Visit Website</a>
+      <div class="footer-note">This verification page confirms the certificate details encoded by the issuing organization.</div>
+    </div>
+  `;
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+render();
+</script>
+
+</body>
+</html>
