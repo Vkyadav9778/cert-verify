@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Smart Billing by VK</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --saffron: #FF6B00;
+  --saffron-dark: #D45A00;
+  --cream: #FBF6EE;
+  --ink: #201A12;
+  --muted: #7A7263;
+  --line: #E8DFCF;
+  --card: #FFFFFF;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.65; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 60px; }
+
+nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.brand-mark {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--saffron), #FF8C3C);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 13px; font-weight: 800; font-family: 'Baloo 2', sans-serif;
+}
+.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-app { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 16px; }
+.brand-by { font-size: 10px; color: var(--muted); font-weight: 600; }
+nav a.back { font-size: 13.5px; color: var(--muted); text-decoration: none; font-weight: 600; }
+
+header.page-head { padding: 20px 0 10px; border-bottom: 1px solid var(--line); margin-bottom: 30px; }
+h1 { font-family: 'Baloo 2', sans-serif; font-size: 30px; }
+.updated { color: var(--muted); font-size: 13px; margin-top: 6px; }
+
+h2 { font-family: 'Baloo 2', sans-serif; font-size: 19px; margin-top: 34px; margin-bottom: 10px; color: var(--saffron-dark); }
+p { margin-bottom: 12px; font-size: 15px; }
+ul { margin: 0 0 12px 20px; }
+li { margin-bottom: 6px; font-size: 15px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin: 16px 0; font-size: 14px; color: var(--muted); }
+strong { color: var(--ink); }
+a { color: var(--saffron-dark); }
+footer { margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <a href="index.html" class="brand">
+      <div class="brand-mark">VK</div>
+      <div class="brand-text">
+        <div class="brand-app">Smart Billing</div>
+        <div class="brand-by">BY VK</div>
+      </div>
+    </a>
+    <a href="index.html" class="back">← Back to home</a>
+  </nav>
+
+  <header class="page-head">
+    <h1>Privacy Policy</h1>
+    <div class="updated">Smart Billing, by VK · Last updated: July 2026</div>
+  </header>
+
+  <p>Smart Billing is a billing app built by VK for kirana and grocery store owners. This page explains what information the app handles and how, in plain language.</p>
+
+  <h2>The short version</h2>
+  <div class="card">
+    Smart Billing stores your shop's data — products, bills, and your
+    account details — only on your own phone. Nothing is sent to any
+    server VK runs. The only outside service the app can connect to is
+    <strong>your own Google Drive</strong>, and only if you choose to
+    turn that on.
+  </div>
+
+  <h2>Information you provide</h2>
+  <p>When you register in the app, you provide:</p>
+  <ul>
+    <li>Your name</li>
+    <li>Your shop name</li>
+    <li>Your mobile number</li>
+    <li>Your email address (optional)</li>
+    <li>Your shop address (optional)</li>
+    <li>A password you choose</li>
+  </ul>
+  <p>This information is saved in a local database on your device. It is used only to identify your shop within the app and to show your shop's name on bills and receipts you generate.</p>
+
+  <h2>Product and billing data</h2>
+  <p>Products you add, prices you set, and bills you generate are stored locally on your device in the app's own database. This data is not visible to VK, not uploaded to any server VK controls, and not shared with any third party by the app.</p>
+
+  <h2>Google Drive backup (optional)</h2>
+  <p>If you choose to connect Google Drive from the Backup screen, the app requests permission to create and manage <strong>only the files it creates itself</strong> (the scope used is <code>drive.file</code>). This means:</p>
+  <ul>
+    <li>The app cannot see, read, or modify any other file in your Google Drive.</li>
+    <li>A single backup file containing your shop's product and bill data is created in your Drive.</li>
+    <li>This backup is uploaded automatically when your phone has internet, or at most once every 24 hours.</li>
+    <li>You can disconnect Google Drive at any time from the Backup screen, which stops any further uploads.</li>
+  </ul>
+  <p>VK does not have access to your Google account or your Drive contents. The connection is directly between your phone and your own Google account.</p>
+
+  <h2>Camera and microphone</h2>
+  <p>The app asks for camera access to let you scan product barcodes, and microphone access to let you add items by voice. Neither the camera feed nor voice recordings are stored or sent anywhere — they are processed on your device only, for the moment you use those features.</p>
+
+  <h2>WhatsApp sharing</h2>
+  <p>When you send a bill on WhatsApp, the app opens WhatsApp with a pre-filled message. The app does not have access to your WhatsApp account or messages — it simply hands off the bill text to WhatsApp, the same way any "share" button works.</p>
+
+  <h2>What VK doesn't do</h2>
+  <ul>
+    <li>No advertising or analytics trackers in the app.</li>
+    <li>VK doesn't sell or share your data with third parties.</li>
+    <li>VK doesn't run a server that stores your shop's data.</li>
+  </ul>
+
+  <h2>Deleting your data</h2>
+  <p>Since all data lives on your device, uninstalling the app removes your local data. If you connected Google Drive, you can delete the backup file directly from your Google Drive, or disconnect the app's access from your Google Account settings at <a href="https://myaccount.google.com/permissions" target="_blank">myaccount.google.com/permissions</a>.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy can be sent to the developer via GitHub: <a href="https://github.com/Vkyadav9778" target="_blank">github.com/Vkyadav9778</a>.</p>
+
+  <footer>© 2026 VK · Smart Billing</footer>
+</div>
+
+</body>
+</html>
