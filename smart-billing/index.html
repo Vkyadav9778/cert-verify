@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Billing — by VK</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --saffron: #FF6B00;
+  --saffron-dark: #D45A00;
+  --cream: #FBF6EE;
+  --ink: #201A12;
+  --muted: #7A7263;
+  --green: #1A7A1A;
+  --line: #E8DFCF;
+  --card: #FFFFFF;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-mark {
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--saffron), #FF8C3C);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 15px; font-weight: 800;
+  font-family: 'Baloo 2', sans-serif;
+}
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-app { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 18px; }
+.brand-by { font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: 0.02em; }
+nav a.nav-link { color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 600; margin-left: 28px; }
+nav a.nav-link:hover { color: var(--saffron); }
+
+.hero {
+  padding: 60px 0 40px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+}
+@media (max-width: 760px) { .hero { grid-template-columns: 1fr; padding-top: 30px; } }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #FFF1E3; color: var(--saffron-dark);
+  font-size: 12.5px; font-weight: 700;
+  padding: 6px 12px; border-radius: 20px; margin-bottom: 18px;
+}
+h1 { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 44px; line-height: 1.12; letter-spacing: -0.01em; }
+@media (max-width: 500px) { h1 { font-size: 33px; } }
+h1 span { color: var(--saffron); }
+.sub { margin-top: 16px; font-size: 17px; color: var(--muted); max-width: 46ch; }
+.cta-row { margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 22px; border-radius: 12px;
+  font-weight: 700; font-size: 14.5px; text-decoration: none; border: 2px solid transparent;
+}
+.btn-primary { background: var(--saffron); color: white; box-shadow: 0 8px 20px rgba(255,107,0,0.28); }
+.btn-ghost { border-color: var(--line); color: var(--ink); }
+
+.receipt {
+  background: var(--card); border-radius: 4px; padding: 26px 24px 32px;
+  box-shadow: 0 20px 44px rgba(32,26,18,0.12); position: relative;
+  transform: rotate(2deg); font-family: 'Inter', monospace;
+}
+.receipt::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -9px; height: 18px;
+  background:
+    linear-gradient(-45deg, var(--cream) 8px, transparent 0) 0 8px,
+    linear-gradient(45deg, var(--cream) 8px, transparent 0) 0 8px;
+  background-size: 16px 16px; background-repeat: repeat-x;
+}
+.receipt-shop { font-weight: 800; text-align: center; font-size: 15px; }
+.receipt-sub { text-align: center; font-size: 11px; color: var(--muted); margin-bottom: 12px; }
+.receipt hr { border: none; border-top: 1px dashed var(--line); margin: 10px 0; }
+.receipt-row { display: flex; justify-content: space-between; font-size: 12.5px; padding: 3px 0; }
+.receipt-total { display: flex; justify-content: space-between; font-weight: 800; font-size: 15px; margin-top: 6px; color: var(--saffron-dark); }
+
+.features { padding: 50px 0 60px; border-top: 1px solid var(--line); }
+.features h2 { font-family: 'Baloo 2', sans-serif; font-size: 26px; margin-bottom: 30px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+.feature-card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+.feature-icon { font-size: 26px; margin-bottom: 10px; }
+.feature-card h3 { font-size: 15px; margin-bottom: 6px; }
+.feature-card p { font-size: 13.5px; color: var(--muted); }
+
+.about-vk { border-top: 1px solid var(--line); padding: 34px 0; display: flex; align-items: center; gap: 18px; }
+.about-vk .brand-mark { width: 44px; height: 44px; font-size: 18px; flex-shrink: 0; }
+.about-vk p { font-size: 14px; color: var(--muted); max-width: 60ch; }
+.about-vk strong { color: var(--ink); }
+
+footer {
+  border-top: 1px solid var(--line); padding: 28px 0;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; color: var(--muted); flex-wrap: wrap; gap: 10px;
+}
+footer a { color: var(--muted); text-decoration: none; margin-left: 18px; }
+footer a:hover { color: var(--saffron-dark); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="brand">
+      <div class="brand-mark">VK</div>
+      <div class="brand-text">
+        <div class="brand-app">Smart Billing</div>
+        <div class="brand-by">BY VK</div>
+      </div>
+    </div>
+    <div>
+      <a class="nav-link" href="#features">Features</a>
+      <a class="nav-link" href="privacy-policy.html">Privacy Policy</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">🏪 Built for local kirana stores</div>
+      <h1>Billing that works even when the <span>internet doesn't.</span></h1>
+      <p class="sub">Smart Billing is an offline-first billing app for kirana and grocery stores — scan or speak to add items, send bills on WhatsApp, and keep your stock organized, all from your phone.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#features">See what it does</a>
+        <a class="btn btn-ghost" href="privacy-policy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="receipt">
+      <div class="receipt-shop">🏪 Smart Billing</div>
+      <div class="receipt-sub">Bill No: #KR-0142</div>
+      <hr>
+      <div class="receipt-row"><span>🌾 Basmati Rice × 2 kg</span><span>₹120</span></div>
+      <div class="receipt-row"><span>🫘 Toor Dal × 1 kg</span><span>₹120</span></div>
+      <div class="receipt-row"><span>🥛 Milk × 1 litre</span><span>₹55</span></div>
+      <hr>
+      <div class="receipt-total"><span>Total</span><span>₹295</span></div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <h2>What Smart Billing does</h2>
+    <div class="grid">
+      <div class="feature-card">
+        <div class="feature-icon">📷</div>
+        <h3>Scan or speak to bill</h3>
+        <p>Scan a barcode or just say the item name — it's added to the bill instantly.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>Send bills on WhatsApp</h3>
+        <p>One tap sends a formatted bill straight to the customer's WhatsApp.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📦</div>
+        <h3>Manage your stock</h3>
+        <p>Add, edit, and remove products — prices, units, and categories, all in your control.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📶</div>
+        <h3>Works fully offline</h3>
+        <p>Every feature works with zero internet — billing never has to wait for signal.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💾</div>
+        <h3>Automatic local backup</h3>
+        <p>Your data is backed up on your own phone automatically, after every change.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">☁️</div>
+        <h3>Optional Drive backup</h3>
+        <p>Connect your own Google Drive for an extra safety copy — private to your account only.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="about-vk">
+    <div class="brand-mark">VK</div>
+    <p><strong>VK</strong> is a small software studio building focused, practical apps — Smart Billing is one of them, made for kirana and grocery store owners who need billing that just works, online or off.</p>
+  </div>
+
+  <footer>
+    <div>© 2026 VK</div>
+    <div>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
